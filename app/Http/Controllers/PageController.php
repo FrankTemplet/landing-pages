@@ -193,7 +193,7 @@ class PageController extends Controller
         if (request()->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Page unpublished successfully.',
+                'message' => 'Page unpublished successfully',
             ]);
         }
 
