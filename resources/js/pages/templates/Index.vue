@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { index as pagesIndex, create as pagesCreate, fromTemplate as pagesFromTemplate } from '@/routes/pages';
 import { index as templatesIndex } from '@/routes/templates';
 
@@ -20,7 +20,7 @@ interface Props {
   templates: Template[];
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 defineOptions({
   layout: {

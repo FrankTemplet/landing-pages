@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { index as templatesIndex } from '@/routes/templates';
-import { index as pagesIndex, create as pagesCreate, edit as pagesEdit, duplicate as pagesDuplicate, destroy as pagesDestroy, unpublish as pagesUnpublish } from '@/routes/pages';
 import { publicMethod as publicPageShow } from '@/routes/page';
+import { index as pagesIndex, create as pagesCreate, edit as pagesEdit, duplicate as pagesDuplicate, destroy as pagesDestroy, unpublish as pagesUnpublish } from '@/routes/pages';
+import { index as templatesIndex } from '@/routes/templates';
 
 interface Page {
   id: number;
@@ -20,7 +20,7 @@ interface Props {
   pages: Page[];
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 defineOptions({
   layout: {

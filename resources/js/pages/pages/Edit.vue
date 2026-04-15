@@ -55,8 +55,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { registerAllBlocks } from '@/editor/blocks';
 import { autosave as pagesAutosave, update as pagesUpdate, index as pagesIndex } from '@/routes/pages'
 import { publish as pagesPublish } from '@/routes/pages'
@@ -694,7 +694,11 @@ const buildContentPayload = () => {
 
 const getCsrfToken = () => {
   const match = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]*)/)
-  if (match) return decodeURIComponent(match[1])
+
+  if (match) {
+    return decodeURIComponent(match[1])
+  }
+
   return document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
 }
 
@@ -710,6 +714,7 @@ const csrfFetch = async (url: string, options: RequestInit = {}): Promise<Respon
 
   if (response.status === 419) {
     const retryHeaders = { ...options.headers as Record<string, string>, 'X-XSRF-TOKEN': getCsrfToken() }
+
     return fetch(url, { ...options, headers: retryHeaders })
   }
 
@@ -722,6 +727,7 @@ const updateTitle = async () => {
   if (!newTitle || newTitle === pageTitle.value) {
     titleInput.value = pageTitle.value
     editingTitle.value = false
+
     return
   }
 
@@ -756,6 +762,7 @@ const updateSlug = async () => {
   if (!newSlug || newSlug === pageSlug.value) {
     slugInput.value = pageSlug.value
     editingSlug.value = false
+
     return
   }
 
@@ -881,6 +888,7 @@ const publish = async () => {
     if (publishResponse.ok) {
       hasUnsavedChanges.value = false
       router.visit(pagesIndex().url)
+
       return
     } else {
       showNotification('error', 'Error al publicar la página');
