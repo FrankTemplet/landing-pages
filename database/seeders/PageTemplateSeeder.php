@@ -68,7 +68,7 @@ class PageTemplateSeeder extends Seeder
             [
                 'name' => 'Pricing Table',
                 'slug' => 'pricing',
-                'description' => 'Display your pricing plans in a clean layout.',
+                'description' => 'Display your pricing plans in a clean layout. Clean and modern pricing table template with three plans: Starter, Professional, and Enterprise. Each plan highlights its features and pricing, with the Professional plan emphasized as the most popular choice.',
                 'is_system' => true,
                 'content_json' => [
                     'gjs-assets' => [],
